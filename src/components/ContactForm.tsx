@@ -14,6 +14,8 @@ const ContactForm: React.FC = () => {
     transactionalConsent: false,
     marketingConsent: false,
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -24,23 +26,60 @@ const ContactForm: React.FC = () => {
     setFormData(prev => ({ ...prev, [name]: checked }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    toast({
-      title: "Message Sent",
-      description: "We've received your message and will get back to you soon!",
-    });
-    // Reset form after submission
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-      transactionalConsent: false,
-      marketingConsent: false,
-    });
+    
+    try {
+      setIsSubmitting(true);
+      
+      const formSubmissionData = {
+        ...formData,
+        access_key: 'e73a3855-6c64-4906-8bf6-06b01b148bfa',
+        from_name: formData.name,
+        subject: formData.subject || 'New Contact Form Submission',
+        to_email: 'seginc2@gmail.com',
+      };
+      
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formSubmissionData)
+      });
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        toast({
+          title: "Message Sent",
+          description: "We've received your message and will get back to you soon!",
+        });
+        
+        // Reset form after submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+          transactionalConsent: false,
+          marketingConsent: false,
+        });
+      } else {
+        throw new Error(result.message || 'Something went wrong');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem sending your message. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -149,9 +188,10 @@ const ContactForm: React.FC = () => {
 
         <button
           type="submit"
-          className="bg-[hsl(var(--form-button))] hover:bg-[hsl(var(--form-button-hover))] text-black font-bold py-3 px-6 rounded-md transition-colors duration-200 flex items-center justify-center"
+          disabled={isSubmitting}
+          className="bg-[#AE8870] hover:bg-[#9a7964] text-black font-bold py-3 px-6 rounded-md transition-colors duration-200 flex items-center justify-center"
         >
-          GET IN TOUCH
+          {isSubmitting ? "SENDING..." : "GET IN TOUCH"}
         </button>
       </form>
     </div>
