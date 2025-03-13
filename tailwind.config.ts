@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,10 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				formButton: 'hsl(var(--form-button))',
+				formButtonHover: 'hsl(var(--form-button-hover))',
+				formIcon: 'hsl(var(--form-icon))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
