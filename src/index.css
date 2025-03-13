@@ -52,9 +52,9 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
     
     /* Custom form colors */
-    --form-button: 35 100% 50%;
-    --form-button-hover: 35 100% 45%;
-    --form-icon: 35 80% 50%;
+    --form-button: 24 31% 56%;
+    --form-button-hover: 24 31% 51%;
+    --form-icon: 24 31% 56%;
   }
 
   .dark {
