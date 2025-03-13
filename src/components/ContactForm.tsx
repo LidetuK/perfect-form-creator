@@ -44,11 +44,11 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="w-full max-w-2xl mx-auto py-2">
+      <form onSubmit={handleSubmit} className="space-y-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="relative">
-            <User className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
+            <User className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-[hsl(var(--form-icon))]" />
             <input
               type="text"
               name="name"
@@ -56,12 +56,12 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               placeholder="Name"
               required
-              className="w-full bg-transparent border-b border-gray-700 pl-8 pb-2 text-white focus:outline-none focus:border-[hsl(var(--form-icon))]"
+              className="w-full bg-transparent border-b border-gray-700 pl-5 pb-1 text-white text-xs focus:outline-none focus:border-[hsl(var(--form-icon))]"
             />
           </div>
 
           <div className="relative">
-            <Mail className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
+            <Mail className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-[hsl(var(--form-icon))]" />
             <input
               type="email"
               name="email"
@@ -69,64 +69,61 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               placeholder="Email Address"
               required
-              className="w-full bg-transparent border-b border-gray-700 pl-8 pb-2 text-white focus:outline-none focus:border-[hsl(var(--form-icon))]"
+              className="w-full bg-transparent border-b border-gray-700 pl-5 pb-1 text-white text-xs focus:outline-none focus:border-[hsl(var(--form-icon))]"
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="relative">
-            <Phone className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
+            <Phone className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-[hsl(var(--form-icon))]" />
             <input
               type="tel"
               name="phone"
               value={formData.phone}
               onChange={handleChange}
               placeholder="Phone"
-              className="w-full bg-transparent border-b border-gray-700 pl-8 pb-2 text-white focus:outline-none focus:border-[hsl(var(--form-icon))]"
+              className="w-full bg-transparent border-b border-gray-700 pl-5 pb-1 text-white text-xs focus:outline-none focus:border-[hsl(var(--form-icon))]"
             />
           </div>
 
           <div className="relative">
-            <Info className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
+            <Info className="absolute left-0 top-1/2 -translate-y-1/2 h-3 w-3 text-[hsl(var(--form-icon))]" />
             <input
               type="text"
               name="subject"
               value={formData.subject}
               onChange={handleChange}
               placeholder="Subject"
-              className="w-full bg-transparent border-b border-gray-700 pl-8 pb-2 text-white focus:outline-none focus:border-[hsl(var(--form-icon))]"
+              className="w-full bg-transparent border-b border-gray-700 pl-5 pb-1 text-white text-xs focus:outline-none focus:border-[hsl(var(--form-icon))]"
             />
           </div>
         </div>
 
         <div className="relative">
-          <Pencil className="absolute left-0 top-4 h-5 w-5 text-[hsl(var(--form-icon))]" />
+          <Pencil className="absolute left-0 top-2 h-3 w-3 text-[hsl(var(--form-icon))]" />
           <textarea
             name="message"
             value={formData.message}
             onChange={handleChange}
             placeholder="How can we help you? Feel free to get in touch!"
-            rows={3}
-            className="w-full bg-transparent border-b border-gray-700 pl-8 pb-2 text-white focus:outline-none focus:border-[hsl(var(--form-icon))]"
+            rows={2}
+            className="w-full bg-transparent border-b border-gray-700 pl-5 pb-1 text-white text-xs focus:outline-none focus:border-[hsl(var(--form-icon))]"
           />
         </div>
 
-        <div className="border-t border-gray-700 pt-4">
-          <div className="flex items-start space-x-2 mb-3">
+        <div className="border-t border-gray-700 pt-2">
+          <div className="flex items-start space-x-2 mb-2">
             <Checkbox 
               id="transactionalConsent" 
               checked={formData.transactionalConsent}
               onCheckedChange={(checked) => 
                 handleCheckboxChange('transactionalConsent', checked as boolean)
               }
-              className="mt-1 border-gray-700 data-[state=checked]:bg-[hsl(var(--form-icon))] data-[state=checked]:text-black"
+              className="mt-1 border-gray-700 data-[state=checked]:bg-[hsl(var(--form-icon))] data-[state=checked]:text-black h-3 w-3"
             />
-            <label htmlFor="transactionalConsent" className="text-sm text-gray-300">
-              By checking this box, I consent to receive transactional messages related to my account, 
-              orders, or services I have requested. These messages may include appointment reminders, 
-              order confirmations, and account notifications among others. Message frequency may vary. 
-              Message & Data rates may apply. Reply HELP for help or STOP to opt-out.
+            <label htmlFor="transactionalConsent" className="text-xs text-gray-300">
+              I consent to receive transactional messages related to my account and services.
             </label>
           </div>
           
@@ -137,19 +134,17 @@ const ContactForm: React.FC = () => {
               onCheckedChange={(checked) => 
                 handleCheckboxChange('marketingConsent', checked as boolean)
               }
-              className="mt-1 border-gray-700 data-[state=checked]:bg-[hsl(var(--form-icon))] data-[state=checked]:text-black"
+              className="mt-1 border-gray-700 data-[state=checked]:bg-[hsl(var(--form-icon))] data-[state=checked]:text-black h-3 w-3"
             />
-            <label htmlFor="marketingConsent" className="text-sm text-gray-300">
-              By checking this box, I consent to receive marketing and promotional messages, including
-              special offers, discounts, new product updates among others. Message frequency may vary.
-              Message & Data rates may apply. Reply HELP for help or STOP to opt-out.
+            <label htmlFor="marketingConsent" className="text-xs text-gray-300">
+              I consent to receive marketing and promotional messages.
             </label>
           </div>
         </div>
 
         <button
           type="submit"
-          className="bg-[hsl(var(--form-button))] hover:bg-[hsl(var(--form-button-hover))] text-black font-bold py-3 px-6 rounded-md transition-colors duration-200 flex items-center justify-center"
+          className="bg-[#AE8870] hover:bg-[#9a7863] text-black text-xs font-medium py-1.5 px-4 rounded-md transition-colors duration-200 flex items-center justify-center"
         >
           GET IN TOUCH
         </button>
