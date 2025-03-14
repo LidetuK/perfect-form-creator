@@ -83,7 +83,7 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6">
+    <div className="w-full max-w-2xl mx-auto p-6 bg-black">
       <form onSubmit={handleSubmit} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative">
@@ -151,7 +151,7 @@ const ContactForm: React.FC = () => {
           />
         </div>
 
-        <div className="border-t border-gray-700 pt-4">
+        <div className="border-t border-gray-700 pt-4 bg-black">
           <div className="flex items-start space-x-2 mb-3">
             <Checkbox 
               id="transactionalConsent" 
