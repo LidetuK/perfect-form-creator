@@ -83,9 +83,9 @@ const ContactForm: React.FC = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto p-6 bg-black">
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="w-full h-full bg-black py-4">
+      <form onSubmit={handleSubmit} className="space-y-4 max-w-2xl mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="relative">
             <User className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
             <input
@@ -113,7 +113,7 @@ const ContactForm: React.FC = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="relative">
             <Phone className="absolute left-0 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--form-icon))]" />
             <input
